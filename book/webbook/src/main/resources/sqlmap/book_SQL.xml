@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+
+    <insert id="insert" >
+        insert into book(title, author, published_date ,available_count )
+        VALUES (#{title}, #{author}, #{published_date}, #{available_count})
+    </insert>
+
+    <select id="list" resultType="com.test.webbook.dto.BookDto">
+        select book_id, title, author, published_date ,available_count , create_date, update_date
+        from book
+    </select>
+
+    <select id="detail" resultType="com.test.webbook.dto.BookDto">
+        select book_id, title, author, published_date, available_count, create_date, update_date
+          from book
+         where book_id = #{book_id}
+    </select>
+
+    <update id="update" >
+        update book
+           set title=#{title}, author=#{author}, published_date=#{published_date}, available_count=#{available_count}, update_date=NOW()
+         where book_id=#{book_id}
+    </update>
+
+    <delete id="delete">
+        delete from book
+         where book_id=#{book_id}
+    </delete>
+
+</mapper>
