@@ -52,9 +52,9 @@
         <div class="panel-heading">상세 수정 </div>
         <div class="panel-body">
           <form id="form1" name="form1" method="post">
-            <div class="form-control mb-3"> 책 번호 :
+            <div class="form-control"> 책 번호 :
               <input type="hidden" name="book_id" value="${dto.book_id}"/>${dto.book_id}</div>
-            <div class="form-control col-lg-3">
+            <div class="form-control">
               제목 : <input name="title" id="title" value="${dto.title}">
             </div>
             <div class="form-control">
