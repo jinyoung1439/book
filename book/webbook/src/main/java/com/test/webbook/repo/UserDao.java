@@ -15,8 +15,13 @@ public class UserDao {
     public UserDto login_check(UserDto uDto) {
         return sqlSession.selectOne("user.login_check", uDto);
     }
+    
 
-    public void insert(UserDto uDto) {
-         sqlSession.insert("user.insert", uDto);
+    public void sign_up(UserDto uDto) {
+        sqlSession.insert("user.insert",uDto);
+    }
+
+    public int getByEmail(String email) {
+        return sqlSession.selectOne("user.getByEmail", email);
     }
 }

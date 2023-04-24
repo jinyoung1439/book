@@ -17,8 +17,23 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void insert(UserDto uDto) {
-        userDao.insert(uDto);
-
+    public void sign_up(UserDto uDto) {
+        userDao.sign_up(uDto);
     }
+
+    @Override
+    public int getByEmail(String email) {
+        return userDao.getByEmail(email);
+    }
+
+
+//    @Override
+//    public UserDto detail(int userId) {
+//        return null;
+//    }
+//
+//    @Override
+//    public void update(UserDto uDto) {
+//
+//    }
 }

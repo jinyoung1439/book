@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+    <insert id="insert" >
+        insert into user(username, email, password )
+        VALUES (#{username}, #{email}, #{password})
+    </insert>
+
+    <select id="getByEmail" resultType="int">
+        select count(user_id) from user where email = #{email}
+    </select>
+
+    <select id="detail" resultType="com.test.webbook.dto.UserDto">
+        select user_id, username, email, password, create_date
+        from user
+        where user_id = #{user_id}
+    </select>
+
+    <update id="update" >
+        update user
+        set username=#{username}, password=#{password}
+        where user_id=#{user_id}
+    </update>
+
+    <delete id="delete">
+        delete from user
+        where user_id=#{user_id}
+    </delete>
+
+</mapper>
