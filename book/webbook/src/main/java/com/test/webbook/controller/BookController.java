@@ -53,7 +53,6 @@ public class BookController {
 
     @RequestMapping(value = "/delete")
     public String delete(BookDto dto){
-        System.out.println(dto.getBook_id());
         bookService.delete(dto);
         return "redirect:/book/list";
     }

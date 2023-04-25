@@ -19,36 +19,32 @@
             if (!emailRegex.test(email)) {
                 alert('유효한 이메일 주소로 입력해주세요');
                 e.preventDefault();
-                return;
             }
 
             // 이메일 중복 확인 ajax
             $.ajax({
-                url: '/user/getByEmail',
+                url: '/user/email_chk',
                 type: 'POST',
                 data: { email: email },
-                success: function(cnt) {
-                    if (cnt === 1) {
+                success: function(result) {
+                    if (result == "false") {
                         alert('이미 가입된 이메일 주소입니다.');
                         e.preventDefault();
                         return;
                     } else {
                         alert('회원가입이 완료되었습니다.');
-                        return;
                     }
                 },
                 error: function() {
                     alert('잘못된 정보입니다. 다시 입력해주세요 ');
                     e.preventDefault();
-                    return;
                 }
             });
         });
     });
 </script>
 <body>
-<h1>회원가입</h1>
-<form action="/user/insert" method="post" class="mx-auto my-4 col-12 col-md-6">
+<form action="/user/sign_up" method="post" class="mx-auto my-4 col-12 col-md-6">
     <h2 class="text-center mb-4">회원가입</h2>
     <div class="form-group">
         <label for="username">사용자 이름:</label>

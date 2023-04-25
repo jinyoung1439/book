@@ -28,4 +28,12 @@
         where user_id=#{user_id}
     </delete>
 
+    <select id="login_check" resultType="com.test.webbook.dto.UserDto">
+        select user_id, email, password
+        from user
+        where email = #{email}
+          and password = #{password}
+    </select>
+
+
 </mapper>

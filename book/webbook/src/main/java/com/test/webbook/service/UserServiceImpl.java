@@ -23,17 +23,25 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int getByEmail(String email) {
+
         return userDao.getByEmail(email);
     }
 
 
-//    @Override
-//    public UserDto detail(int userId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void update(UserDto uDto) {
-//
-//    }
+    @Override
+    public UserDto detail(int userId) {
+        return userDao.detail(userId);
+    }
+
+    @Override
+    public void update(UserDto uDto) {
+         userDao.update(uDto);
+    }
+
+    @Override
+    public void delete(UserDto uDto) {
+        userDao.delete(uDto);
+    }
+
+
 }

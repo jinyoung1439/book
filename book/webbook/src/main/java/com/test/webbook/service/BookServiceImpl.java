@@ -38,4 +38,11 @@ public class BookServiceImpl implements BookService{
     public void delete(BookDto dto) {
         bookDao.delete(dto);
     }
+
+    @Override
+    public void decrementCount(int bookId) {
+        bookDao.decrementCount(bookId);
+    }
+
+
 }

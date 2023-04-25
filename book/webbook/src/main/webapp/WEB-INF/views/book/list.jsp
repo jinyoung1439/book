@@ -21,7 +21,7 @@
 </script>
 
 <body>
-<%--<%@ include file="/WEB-INF/views/common/layout.jsp" %>--%>
+<%@ include file="/WEB-INF/views/nav.jsp" %>
 <div class="page-wrapper">
     <div class="container-fluid">
         <div class="col-lg-8"><!--게시판 넓이 -->

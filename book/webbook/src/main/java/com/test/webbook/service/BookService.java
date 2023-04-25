@@ -17,4 +17,6 @@ public interface BookService {
      void update(BookDto dto);
 
      void delete(BookDto dto);
+
+     void decrementCount(int bookId);
 }

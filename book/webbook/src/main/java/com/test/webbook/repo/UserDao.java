@@ -24,4 +24,16 @@ public class UserDao {
     public int getByEmail(String email) {
         return sqlSession.selectOne("user.getByEmail", email);
     }
+
+    public UserDto detail(int userId) {
+        return  sqlSession.selectOne("user.detail",userId);
+    }
+
+    public void update(UserDto uDto) {
+        sqlSession.update("user.update", uDto);
+    }
+
+    public void delete(UserDto uDto) {
+        sqlSession.delete("user.delete",uDto);
+    }
 }

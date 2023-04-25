@@ -9,9 +9,10 @@ public interface UserService {
 
     int getByEmail(String email);
 
+    UserDto detail(int userId);
 
-//
-//    UserDto detail(int userId);
-//
-//    void update(UserDto uDto);
+    void update(UserDto uDto);
+
+    void delete(UserDto uDto);
+
 }

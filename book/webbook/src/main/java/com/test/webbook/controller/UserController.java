@@ -33,8 +33,9 @@ public class UserController {
      */
     @RequestMapping(value = "/sign_up", method = RequestMethod.POST)
     public String sign_up(UserDto u_dto) {
+        System.out.println(u_dto);
         userService.sign_up(u_dto);
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
     /**
@@ -44,9 +45,15 @@ public class UserController {
      */
     @PostMapping("email_chk")
     @ResponseBody
-    public int getByEmail(@RequestParam String email) {
+    public String getByEmail(@RequestParam("email") String email) {
         int cnt = userService.getByEmail(email);
-        return cnt;
+        String result = "";
+        if (cnt>0){
+            result="false";
+        } else {
+            result="true";
+        }
+        return result;
     }
 
 
@@ -57,12 +64,13 @@ public class UserController {
 
     @RequestMapping(value = "/login_check", method = RequestMethod.POST)
     public ModelAndView login_check(UserDto u_dto, HttpSession session, ModelAndView mv){
-        UserDto login_chk = userService.login_check(u_dto);
-        if(login_chk != null){
-            session.setAttribute("email", login_chk.getEmail());
+        UserDto login_check = userService.login_check(u_dto);
+        if(login_check != null){
+            session.setAttribute("user_id", login_check.getUser_id());
+            session.setAttribute("email", login_check.getEmail());
             session.setMaxInactiveInterval(1800);
             mv.setViewName("home");
-        } else if (login_chk == null) {
+        } else if (login_check == null) {
             mv.setViewName("login");
             mv.addObject("data", "error");
         }
@@ -72,22 +80,28 @@ public class UserController {
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpSession session){
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
-//
-//    @RequestMapping(value = "/detail")
-//    public ModelAndView detail(int user_id, ModelAndView mv){
-//        mv.setViewName("user/detail");
-//        mv.addObject("dto", userService.detail(user_id));
-//        return mv;
-//    }
-//
-//    @RequestMapping(value = "/update")
-//    public String update(UserDto u_dto){
-//        userService.update(u_dto);
-//        return "redirect:/user/detail";
-//    }
 
+    @RequestMapping(value = "/detail")
+    public ModelAndView detail(int user_id, ModelAndView mv){
+        mv.setViewName("user/detail");
+        mv.addObject("dto", userService.detail(user_id));
+        return mv;
+    }
+
+    @RequestMapping(value = "/update")
+    public String update(UserDto u_dto){
+        userService.update(u_dto);
+        return "redirect:/user/detail";
+    }
+
+    @RequestMapping(value = "/delete")
+    public String delete(UserDto uDto){
+        System.out.println(uDto.getUser_id());
+        userService.delete(uDto);
+        return "redirect:/user/login";
+    }
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rental">
+
+    <insert id="insert" >
+        INSERT INTO rental(user_id, book_id, rental_date)
+        VALUES(#{user_id}, #{book_id}, NOW())
+    </insert>
+
+
+<!--    <update id="decrementCount" parameterType="int" >-->
+<!--        UPDATE book-->
+<!--        SET available_count = available_count - 1-->
+<!--        WHERE book_id = #{book_id}-->
+<!--    </update>-->
+
+    <select id="list" resultMap="bookResultMap">
+        SELECT b.book_id, b.title, b.author, b.published_date, b.available_count, r.rental_id, r.rental_date, r.return_date
+        FROM book b
+                 LEFT JOIN rental r ON b.book_id = r.book_id
+    </select>
+
+    <resultMap id="bookResultMap" type="com.test.webbook.dto.BookDto">
+        <id column="book_id" property="book_id" />
+        <result column="title" property="title" />
+        <result column="author" property="author" />
+        <result column="published_date" property="publishedDate" />
+        <result column="available_count" property="availableCount" />
+        <result column="rental_id" property="rentalId" />
+        <result column="rental_date" property="rentalDate" />
+        <result column="return_date" property="returnDate" />
+    </resultMap>
+
+
+
+</mapper>

@@ -41,7 +41,7 @@
 </script>
 
 <body>
-<%--<%@ include file="/WEB-INF/views/common/layout.jsp" %>--%>
+<%@ include file="/WEB-INF/views/nav.jsp" %>
 <div class="page-wrapper">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -101,6 +101,6 @@
             </div>
         </div>
     </div>
-    <%--<script src="/resources/js/common/layout.js"></script>--%>
+</div>
 </body>
 </html>

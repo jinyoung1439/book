@@ -35,4 +35,8 @@ public class BookDao {
     public void delete(BookDto dto) {
         sqlSession.delete("book.delete",dto);
     }
+
+    public void decrementCount(int bookId) {
+        sqlSession.update("book.decrementCount",bookId);
+    }
 }
