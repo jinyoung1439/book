@@ -12,7 +12,7 @@ public interface RentalService {
 
     List<BookDto> list();
 
-    void returnBook(RentalDto rDto);
+    int returnBook(RentalDto rDto);
 
 
 }

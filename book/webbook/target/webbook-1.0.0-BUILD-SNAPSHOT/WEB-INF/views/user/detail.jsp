@@ -52,35 +52,28 @@
                                 <label class="col-sm-2 col-form-label">회원 번호:</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="user_id" readonly
-                                           value="${dto.user_id}">
+                                           value="${u_dto.user_id}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="username" class="col-sm-2 col-form-label">이름 : </label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="username" id="username"
-                                           value="${dto.username}">
+                                           value="${u_dto.username}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="email" class="col-sm-2 col-form-label">이메일 : </label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="email" id="email"
-                                           value="${dto.email}" readonly>
+                                           value="${u_dto.email}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="email" class="col-sm-2 col-form-label"> 비밀번호 : </label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="password" id="password"
-                                           value="${dto.password}">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="create_time" class="col-sm-2 col-form-label">가입일자 :</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="date" name="create_time" id="create_time"
-                                           value="${dto.create_time}" readonly>
+                                           value="${u_dto.password}">
                                 </div>
                             </div>
                             <div class="form-group row">

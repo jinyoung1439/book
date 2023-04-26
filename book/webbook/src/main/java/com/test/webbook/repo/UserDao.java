@@ -21,6 +21,7 @@ public class UserDao {
         sqlSession.insert("user.insert",uDto);
     }
 
+    // 이메일 중복체크
     public int getByEmail(String email) {
         return sqlSession.selectOne("user.getByEmail", email);
     }

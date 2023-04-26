@@ -26,13 +26,12 @@ public class RentalServiceImpl implements RentalService {
     @Override
     public void rentalBook(RentalDto rDto) {
         rentalDao.rentalbook(rDto);
-        bookService.decrementCount(rDto.getBook_id());
     }
 
 
     @Override
-    public void returnBook(RentalDto rDto) {
-
+    public int returnBook(RentalDto rDto) {
+        return rentalDao.returnbook(rDto);
     }
 
 

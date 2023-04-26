@@ -45,7 +45,7 @@
 							</div>
 							<div class="form-group">
 								<label for="available_count">대여가능 수</label>
-								<input class="form-control" type="number" minlength="0" name="available_count" id="available_count">
+								<input class="form-control" type="number" min="0" name="available_count" id="available_count">
 							</div>
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary">등록하기</button>

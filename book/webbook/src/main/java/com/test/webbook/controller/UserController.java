@@ -56,12 +56,13 @@ public class UserController {
         return result;
     }
 
-
+    // 로그인 페이지 호출
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         return "login";
     }
 
+    // 로그인 체크
     @RequestMapping(value = "/login_check", method = RequestMethod.POST)
     public ModelAndView login_check(UserDto u_dto, HttpSession session, ModelAndView mv){
         UserDto login_check = userService.login_check(u_dto);
@@ -77,6 +78,7 @@ public class UserController {
         return mv;
     }
 
+    // 로그아웃
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpSession session){
         session.invalidate();
@@ -84,19 +86,23 @@ public class UserController {
     }
 
 
+    // 회원 상세 페이지 구현중
     @RequestMapping(value = "/detail")
-    public ModelAndView detail(int user_id, ModelAndView mv){
+    public ModelAndView detail(ModelAndView mv, HttpSession session){
+        String user_id = String.valueOf(session.getAttribute("user_id"));
         mv.setViewName("user/detail");
-        mv.addObject("dto", userService.detail(user_id));
+        mv.addObject("u_dto", userService.detail(Integer.parseInt(user_id)));
         return mv;
     }
 
+    // 회원 수정
     @RequestMapping(value = "/update")
     public String update(UserDto u_dto){
         userService.update(u_dto);
         return "redirect:/user/detail";
     }
 
+    // 회원 탈퇴
     @RequestMapping(value = "/delete")
     public String delete(UserDto uDto){
         System.out.println(uDto.getUser_id());

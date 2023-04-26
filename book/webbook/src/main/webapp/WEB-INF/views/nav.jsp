@@ -29,6 +29,7 @@
         <% if (session.getAttribute("email") == null) { %>
         <li><a href="/user/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
         <% } else { %>
+        <li><a href="/user/detail"><span class="glyphicon glyphicon-log-in" ></span>마이페이지</a></li>
         <li><a href="/user/logout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
         <% } %>
       </ul>

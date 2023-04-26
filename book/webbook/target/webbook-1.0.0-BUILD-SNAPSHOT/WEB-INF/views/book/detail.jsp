@@ -85,7 +85,7 @@
                             <div class="form-group row">
                                 <label for="available_count" class="col-sm-2 col-form-label">대여가능 수 : </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="number" name="available_count"
+                                    <input class="form-control" type="number" min="0" name="available_count"
                                            id="available_count" value="${dto.available_count}">
                                 </div>
                             </div>

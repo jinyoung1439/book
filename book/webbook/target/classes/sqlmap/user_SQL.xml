@@ -12,7 +12,7 @@
     </select>
 
     <select id="detail" resultType="com.test.webbook.dto.UserDto">
-        select user_id, username, email, password, create_date
+        select user_id, username, email, password
         from user
         where user_id = #{user_id}
     </select>

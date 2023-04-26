@@ -17,7 +17,8 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-
+    // 현재 관리자만 접근되도록 구현안했음.-> 이후 추가될 것
+    // 관리자용 책 리스트
     @RequestMapping(value = "list" )
     public ModelAndView list(ModelAndView mv){
         List<BookDto> list = bookService.list();
@@ -26,18 +27,20 @@ public class BookController {
         return mv;
     }
 
-
+    // 관리자 책 등록 페이지 호출
     @RequestMapping(value="/create")
     public String create() {
         return "book/create";
     }
 
-    @RequestMapping(value = "/insert" , produces="application/text; charset=UTF-8;")
+    // 관리자 책 등록
+    @RequestMapping(value = "/insert")
     public String insert(BookDto dto){
         bookService.insert(dto);
         return "redirect:/book/list";
     }
 
+    // 관리자 책 상세 호출
     @RequestMapping(value = "/detail")
     public ModelAndView detail(int book_id, ModelAndView mv){
         mv.setViewName("book/detail");
@@ -45,12 +48,14 @@ public class BookController {
         return mv;
     }
 
+    // 관리자 등록한 책 수정
     @RequestMapping(value = "/update")
     public String update(BookDto dto){
         bookService.update(dto);
         return "redirect:/book/list";
     }
 
+    // 관리자 등록한 책 삭제
     @RequestMapping(value = "/delete")
     public String delete(BookDto dto){
         bookService.delete(dto);

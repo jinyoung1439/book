@@ -30,7 +30,11 @@
     </delete>
 
     <update id="decrementCount" parameterType="int">
-        UPDATE book SET available_count = available_count - 1 WHERE book_id = #{book_id}
+        UPDATE book SET available_count = (available_count-1) WHERE book_id = #{book_id}
+    </update>
+
+    <update id="returnCount" parameterType="int">
+        UPDATE book SET available_count = (available_count+1) WHERE book_id = #{book_id}
     </update>
 
 </mapper>

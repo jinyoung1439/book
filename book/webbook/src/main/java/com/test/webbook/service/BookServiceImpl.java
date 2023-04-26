@@ -39,9 +39,17 @@ public class BookServiceImpl implements BookService{
         bookDao.delete(dto);
     }
 
+    //유저용 책 대여
     @Override
     public void decrementCount(int bookId) {
         bookDao.decrementCount(bookId);
+    }
+
+    // 책 반납
+    @Override
+    public void returnCount(int bookId) {
+        bookDao.returnCount(bookId);
+
     }
 
 

@@ -39,4 +39,8 @@ public class BookDao {
     public void decrementCount(int bookId) {
         sqlSession.update("book.decrementCount",bookId);
     }
+
+    public void returnCount(int bookId) {
+        sqlSession.update("book.returnCount", bookId);
+    }
 }

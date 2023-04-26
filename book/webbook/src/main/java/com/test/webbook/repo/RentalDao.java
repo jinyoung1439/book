@@ -19,9 +19,11 @@ public class RentalDao {
 
     }
 
-
-
     public List<BookDto> list() {
         return sqlSession.selectList("rental.list");
+    }
+
+    public int returnbook(RentalDto rDto) {
+        return sqlSession.delete("rental.delete",rDto);
     }
 }
